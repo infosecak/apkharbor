@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apkharbor-cli"
+version = "0.3.0"
+description = "Authenticated Google Play APK downloader and Android installer"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE", "apkharbor/_vendor/GPLAYDL_LICENSE.txt"]
+dependencies = []
+
+[project.scripts]
+apkharbor = "apkharbor.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["apkharbor*"]
+
+[tool.setuptools.package-data]
+apkharbor = ["default-device.json", "_vendor/*.txt"]

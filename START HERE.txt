@@ -1,0 +1,69 @@
+APKHarbor 0.3.0 — Mac setup and GitHub upload
+
+RUN ON YOUR MAC
+1. Unzip APKHarbor-Open-Source-0.3.0.zip and open APKHarbor-Open-Source.
+2. Open Terminal and run: python3 --version
+   You need Python 3.9 or newer. If missing, install Python for macOS from:
+   https://www.python.org/downloads/macos/
+3. Double-click Start APKHarbor.command.
+   If macOS will not open it, open Terminal, type bash followed by a space,
+   drag Start APKHarbor.command into Terminal, then press Enter.
+   Alternatively, type cd followed by a space, drag the project folder into
+   Terminal, press Enter, then run: python3 menu.py
+4. Choose 1 to sign in with your own Google account.
+   Sign-in is experimental and needs a manual browser token:
+   a. APKHarbor opens Google's EmbeddedSetup page.
+   b. In Chrome, open Developer Tools (Option + Command + I), select Network,
+      enable Preserve log, and reload the page before completing sign-in.
+   c. Enter your password and complete two-factor authentication on Google.
+   d. Inspect a recent accounts.google.com request's response cookies for
+      oauth_token. Copy its value beginning with oauth2_4/.
+   e. Paste ONLY that value into APKHarbor's hidden Terminal prompt.
+      Pasted characters will not appear. Press Enter.
+   Keep this token private. Never upload it, paste it into an issue, or share
+   it in chat. If Google does not issue it or rejects it, login cannot finish.
+5. Choose 2, enter an app name, and select a result number to download it.
+   Or choose 3 and enter an Android package name such as org.videolan.vlc.
+6. Downloads appear in the Downloads folder inside this project.
+   Choose 5 to open that folder. Keep base APKs, splits, and manifest together.
+7. Choose 0 to quit. Choose 7 to remove the local login when needed.
+
+COMMAND LINE (OPTIONAL)
+Open Terminal in the project folder and run:
+  python3 -m apkharbor --version
+  python3 -m apkharbor auth login --email you@example.com
+  python3 -m apkharbor search "VLC" --limit 5
+  python3 -m apkharbor download org.videolan.vlc --output ./downloads
+No package installation is needed for these commands or the Mac menu.
+For an installed apkharbor command, follow the README's virtualenv steps.
+For ADB installation and advanced options, see README.md and docs/ADVANCED_USAGE.md.
+
+UPLOAD TO YOUR PERSONAL GITHUB
+1. Sign in to GitHub and create a repository named APKHarbor (or your choice).
+2. Select Public if you want it available as an open-source project.
+3. Leave GitHub's automatic README, license, and .gitignore options unchecked;
+   this folder already supplies them.
+4. In the empty repository, choose the link to upload existing files.
+5. Drag the CONTENTS of APKHarbor-Open-Source into the upload area, keeping
+   apkharbor/, assets/, docs/, and tests/ as folders. README.md must be at the
+   repository root, not inside an extra enclosing folder.
+6. Include .gitignore (Finder: Command + Shift + period shows hidden files).
+7. Review the file list and commit the upload. Keep LICENSE, THIRD_PARTY.md,
+   and apkharbor/_vendor/GPLAYDL_LICENSE.txt to retain the MIT notices.
+8. If you want a downloadable release, create a GitHub release tagged v0.3.0
+   and attach the original clean ZIP supplied with this project.
+
+Upload the clean project before running it, or omit any local Downloads,
+downloads, .venv, .env, session/token exports, and private files generated later.
+GitHub's browser uploader does not apply .gitignore automatically. Do not upload
+only the ZIP as the repository contents: extract it so GitHub can show the README
+and source code. The ZIP can separately be attached to a release.
+
+NOTES
+- This ZIP includes source, Mac menu, tests, logo, MIT license, and credits.
+- Python, a Google session, APKs, and ADB are not bundled.
+- Google Play access uses an unofficial protocol; compatibility can change.
+- Sessions are plaintext local files, normally in ~/.config/apkharbor.
+- Use only apps your account is entitled to access. No paid-app checkout or
+  entitlement bypass is implemented.
+- APK files run on Android, not directly on macOS.
