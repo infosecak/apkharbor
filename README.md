@@ -103,8 +103,6 @@ The menu provides Google login, app search, numbered download selection, local s
 
 ## Credentials and integrity
 
-Sessions use `~/.config/apkharbor` by default. Set `APKHARBOR_CONFIG_DIR` to override this location. Existing installations can reuse their earlier Droidtool configuration; see the advanced guide.
-
 On POSIX systems, credentials use owner-only files and directories. **They are plaintext, not encrypted at rest.** Windows users must protect the directory with appropriate ACLs.
 
 ```bash
